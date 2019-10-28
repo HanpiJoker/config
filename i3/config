@@ -35,6 +35,7 @@ exec_always --no-startup-id killall clipit; clipit
 exec_always --no-startup-id nutstore
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
+exec_always --no-startup-id killall pa-applet; pa-applet
 exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
 exec_always --no-startup-id ~/.config/i3/polybar.sh &
 exec_always --no-startup-id ~/.config/i3/inverse-scroll.sh &
@@ -183,10 +184,10 @@ bindsym $mod+r mode "resize"
 #bar {
 #        status_command i3status
 #}
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +1%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -1%
-bindsym XF86AudioMute exec --no-startup-id pactl -- set-sink-mute 0 toggle
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 5%- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master mute
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 gaps inner 10
 
