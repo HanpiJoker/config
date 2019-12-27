@@ -1,17 +1,9 @@
-" 模板补全
-" UltiSnips 的 tab 键与 YCM 冲突，重新设定
-let g:UltiSnipsSnippetDirectories=["mysnippets"]
-let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
-let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
-
 " 库信息参考
 " 启用:Man命令查看各类man信息
 source $VIMRUNTIME/ftplugin/man.vim
 
 " 定义:Man命令查看各类man信息的快捷键
-nmap <Leader>man :Man 3 <C-R>=expand("<cword>")<CR><CR>
-
+nmap <Leader>man :Man 3 <C-R>=expand("<cword>")<CR><CR> 
 
 " 快捷键
 map <SPACE> <Plug>(wildfire-fuel)
@@ -128,7 +120,7 @@ function! OpenProgramPlugin ()
     UndotreeHide
     SrcExplToggle
     TagbarToggle
-    NERDTreeToggle
+   " NERDTreeToggle
 endfunction
 nnoremap <leader>cla :call OpenProgramPlugin()<CR>
 
@@ -196,6 +188,7 @@ nnoremap <leader>tm :TableModeToggle<CR>
 "let g:markdown_enable_conceal = ""
 let g:markdown_quote_syntax_on_filetypes = ['text']
 set conceallevel=2
+
 " === UndoTree
 function! OpenUndoTree()
     SrcExplClose
@@ -226,7 +219,5 @@ vmap <silent> <Leader>re <Plug>TranslateRV
 let g:ctrlsf_ackprg = 'ag'   
 nmap <Leader>sf :CtrlSF<space>
 
-nmap <silent> <C-]> <Plug>(coc-definition)
-nmap <silent> <C-j> <Plug>(coc-references)
-nn <silent> K :call CocActionAsync('doHover')<cr>
-
+" 让输入上方，搜索列表在下方
+let $FZF_DEFAULT_OPTS = '--layout=reverse'

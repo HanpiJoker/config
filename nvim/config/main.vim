@@ -1,6 +1,7 @@
 " 定义快捷键的前缀，即 <Leader>
 let mapleader=";"
-" 开启256色 set t_Co=256
+" 开启256色 
+set t_Co=256
 
 " >>
 " 文件类型侦测
@@ -14,7 +15,7 @@ filetype plugin on
 set number
 set relativenumber
 " 高亮当前行
-set cursorline
+" set cursorline
 " 禁止折行
 set nowrap
 " 自动换行
@@ -27,7 +28,7 @@ syntax on
 filetype indent on
 
 " 将制表符扩展为空格
-set expandtab
+" set expandtab
 " 设置编辑时制表符占用空格数
 set tabstop=4
 " 设置格式化时制表符占用空格数
@@ -45,7 +46,9 @@ set completeopt=noinsert,menuone,noselect
 
 " 配色方案
 " set background=dark
-colorscheme lucius
+" 透明
+" colorscheme jellybeans
+ colorscheme solarized
 " hi Normal ctermbg=NONE
 " >>
 " vim 自身（非插件）快捷键
@@ -110,15 +113,15 @@ nmap <leader>bd :bd<CR>
 " cscope setting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 引入 C++ 标准库 tags
-set tags+=/usr/include/c++/9.1.0/stdcpp.tags
-set tags+=/usr/include/sys.tags
+"set tags+=/usr/include/c++/9.1.0/stdcpp.tags
+"set tags+=/usr/include/sys.tags
 if has("cscope")
   set csprg=/usr/bin/cscope
   set csto=1
   set cst
   set nocsverb
   " add any database in current directory
-  if filereadable("cscope/cscope.out")
+  if filereadable("./cscope/cscope.out")
       cs add ./cscope/cscope.out
   endif
   set csverb
@@ -136,3 +139,6 @@ nmap <C-s>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 au! BufRead,BufNewFile *.markdown set filetype=markdown
 au! BufRead,BufNewFile *.md set filetype=markdown
+
+"show tab and enter character 
+set list lcs+=tab:\┆\ ,eol:¬

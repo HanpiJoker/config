@@ -9,17 +9,12 @@ set nowritebackup
 set cmdheight=2
 
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
-
+set updatetime=300 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
-
-"" 引入 C++ 标准库 tags
-set tags+=/usr/include/c++/7/stdcpp.tags
-set tags+=/usr/include/sys.tags
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -108,7 +103,7 @@ let g:lightline = {
       \ },
       \ }
 
-
+let g:markdown_fenced_languages = ['css', 'js=javascript']
 
 " Using CocList
 " Show all diagnostics
