@@ -18,8 +18,10 @@ set relativenumber
 " set cursorline
 " 禁止折行
 set nowrap
+set sidescroll=1
 " 自动换行
-" set textwidth=70
+set textwidth=99
+set formatoptions+=mM
 " 开启语法高亮功能
 syntax enable
 " 允许用指定语法高亮配色方案替换默认方案

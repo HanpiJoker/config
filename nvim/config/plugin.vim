@@ -45,6 +45,23 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_step = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts=1
+let g:airline#extensions#coc#enabled = 1
+
+"function! StatusDiagnostic() abort
+"  let info = get(b:, 'coc_diagnostic_info', {})
+"  if empty(info) | return '' | endif
+"  let msgs = []
+"  if get(info, 'error', 0)
+"    call add(msgs, 'E' . info['error'])
+"  endif
+"  if get(info, 'warning', 0)
+"    call add(msgs, 'W' . info['warning'])
+"  endif
+"  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+"endfunction
+"
+"set statusline^=%{coc#status()}
+"set statusline^=%{StatusDiagnostic()}
 
 "Tagbar
 " 设置 tagbar 子窗口的位置出现在主编辑区的左边 
