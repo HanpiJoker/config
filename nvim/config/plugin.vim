@@ -32,13 +32,6 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'  
 let g:multi_cursor_quit_key='<Esc>'
 
-" NerdTree Setting
-nmap <leader>fl :NERDTreeToggle<CR>
-let NERDTreeWindSize=10
-let NERDTreeWinPos="right"
-let NERDTreeMinimalUI=1
-let NERDTreeAutoDeleteBuffer=1
-
 "Air Line Setting
 let g:airline_theme='violet'
 let g:airline#extensions#tabline#enabled = 1
@@ -46,100 +39,6 @@ let g:airline#extensions#tabline#left_step = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#coc#enabled = 1
-
-"function! StatusDiagnostic() abort
-"  let info = get(b:, 'coc_diagnostic_info', {})
-"  if empty(info) | return '' | endif
-"  let msgs = []
-"  if get(info, 'error', 0)
-"    call add(msgs, 'E' . info['error'])
-"  endif
-"  if get(info, 'warning', 0)
-"    call add(msgs, 'W' . info['warning'])
-"  endif
-"  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
-"endfunction
-"
-"set statusline^=%{coc#status()}
-"set statusline^=%{StatusDiagnostic()}
-
-"Tagbar
-" 设置 tagbar 子窗口的位置出现在主编辑区的左边 
-let tagbar_left=1 
-" 设置显示／隐藏标签列表子窗口的快捷键。速记：identifier list by tag
-nnoremap <Leader>ilt :TagbarToggle<CR> 
-" 设置标签子窗口的宽度 
-let tagbar_width=20
-" tagbar 子窗口中不显示冗余帮助信息 
-let g:tagbar_compact=1
-
-" Source Explorer
-" // The switch of the Source Explorer 
-nnoremap <Leader>sre :SrcExplToggle<CR> 
-
-" // Set the height of Source Explorer window 
-let g:SrcExpl_winHeight = 8 
-
-" // Set 100 ms for refreshing the Source Explorer 
-let g:SrcExpl_refreshTime = 1000
-
-" // Set "Enter" key to jump into the exact definition context 
-let g:SrcExpl_jumpKey = "<ENTER>" 
-
-" // Set "Space" key for back from the definition context 
-let g:SrcExpl_gobackKey = "<SPACE>" 
-
-" // In order to avoid conflicts, the Source Explorer should know what plugins except
-" // itself are using buffers. And you need add their buffer names into below list
-" // according to the command ":buffers!"
-let g:SrcExpl_pluginList = [
-        \ "__Tag_Bar__",
-        \ "_NERD_tree_",
-        \ "Source_Explorer"
-    \ ]
-
-" // The color schemes used by Source Explorer. There are five color schemes
-" // supported for now - Red, Cyan, Green, Yellow and Magenta. Source Explorer
-" // will pick up one of them randomly when initialization.
-let g:SrcExpl_colorSchemeList = [        
-        \ "Red",
-        \ "Cyan",
-        \ "Green",
-        \ "Yellow",
-        \ "Magenta"
-    \ ]
-
-" // Enable/Disable the local definition searching, and note that this is not 
-" // guaranteed to work, the Source Explorer doesn't check the syntax for now. 
-" // It only searches for a match with the keyword according to command 'gd' 
-let g:SrcExpl_searchLocalDef = 1 
-
-" // Workaround for Vim bug @https://goo.gl/TLPK4K as any plugins using autocmd for
-" // BufReadPre might have conflicts with Source Explorer. e.g. YCM, Syntastic etc.
-let g:SrcExpl_nestedAutoCmd = 1
-
-" // Do not let the Source Explorer update the tags file when opening 
-let g:SrcExpl_isUpdateTags = 0
-
-" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to 
-" // create/update the tags file 
-" let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ." 
-
-" // Set "<F12>" key for updating the tags file artificially 
-" let g:SrcExpl_updateTagsKey = "<S-c>" 
-
-" // Set "<S-k>" key for displaying the previous definition in the jump list 
-let g:SrcExpl_prevDefKey = "<S-k>" 
-
-" // Set "<S-k>" key for displaying the next definition in the jump list 
-let g:SrcExpl_nextDefKey = "<S-j>" 
-function! OpenProgramPlugin ()
-    UndotreeHide
-    SrcExplToggle
-    TagbarToggle
-   " NERDTreeToggle
-endfunction
-nnoremap <leader>cla :call OpenProgramPlugin()<CR>
 
 " Ctrl P Setting
 let g:ctrlp_map = '<c-p>'
@@ -238,3 +137,41 @@ nmap <Leader>sf :CtrlSF<space>
 
 " 让输入上方，搜索列表在下方
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
+
+" Vista Setting
+let g:vista#executives = ['coc', 'ctags', 'lcn', 'vim_lsp']
+let g:vista_executive_for = {
+	\'markdown': 'markdown',
+	\'pandoc': 'markdown',
+	\'vimwiki': 'markdown',
+	\'go': 'coc',
+	\'c': 'ctags',
+	\'rust': 'coc',
+	\'cpp': 'coc',
+	\'python': 'coc'}
+
+" Declare the command including the executable and options used to generate ctags output
+" for some certain filetypes.The file path will be appened to your custom command.
+" For example:
+let g:vista_ctags_cmd = {
+      \ 'haskell': 'hasktags -x -o - -c',
+      \ }
+
+" To enable fzf's preview window set g:vista_fzf_preview.
+" The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
+" For example:
+let g:vista_fzf_preview = ['right:50%']
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+let g:vista#renderer#enable_icon = 1
+
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
+
+let g:vista_sidebar_position = 'vertical topleft'
+let g:vista_update_on_text_changed_delay = 200
+let g:vista_cursor_delay = 200
+nnoremap <leader>vf :Vista finder<CR>
+nnoremap <Leader>ilt :Vista!!<CR>

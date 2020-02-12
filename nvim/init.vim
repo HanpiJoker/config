@@ -28,10 +28,11 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-airline/vim-airline'
 " 项目效率插件
-Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
 Plug 'mbbill/undotree'
-Plug 'scrooloose/nerdtree'
-Plug 'wesleyche/SrcExpl'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'kristijanhusak/defx-icons'
+Plug 'kristijanhusak/defx-git'
 Plug 'junegunn/fzf.vim'
 
 " Markdown
@@ -57,4 +58,8 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/plugin.vim'
 
 if filereadable(fnamemodify(expand('<sfile>'), ':h').'/config/coc.vim')
     execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/coc.vim'
+endif
+
+if filereadable(fnamemodify(expand('<sfile>'), ':h').'/config/defx.vim')
+    execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/defx.vim'
 endif
