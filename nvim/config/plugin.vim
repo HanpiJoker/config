@@ -40,22 +40,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#coc#enabled = 1
 
-" Ctrl P Setting
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-map <leader>f :CtrlPMRU<CR>
-map <leader>cp :CtrlP<CR>
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
-    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
-    \ }
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_match_window_bottom=1
-let g:ctrlp_max_height=15
-let g:ctrlp_match_window_reversed=0
-let g:ctrlp_mruf_max=500
-let g:ctrlp_follow_symlinks=1
-
 " Ale Error Check
 "始终开启标志列
 let g:ale_sign_column_always = 1
@@ -107,9 +91,6 @@ set conceallevel=2
 
 " === UndoTree
 function! OpenUndoTree()
-    SrcExplClose
-    TagbarClose
-    NERDTreeClose
     UndotreeToggle 
 endfunction
 nnoremap <leader>ud :call OpenUndoTree()<CR>
@@ -132,8 +113,19 @@ nmap <silent> <Leader>re <Plug>TranslateR
 vmap <silent> <Leader>re <Plug>TranslateRV
 
 " 设置ctrlsf
-let g:ctrlsf_ackprg = 'ag'   
+let g:ctrlsf_ackprg = 'rg'
+let g:ctrlsf_auto_close = {
+    \ "normal" : 0,
+    \ "compact": 0
+    \}
+let g:ctrlsf_auto_focus = {
+    \ "at": "done",
+    \ "duration_less_than": 1000
+    \ }
+let g:ctrlsf_default_view_mode = 'compact'
 nmap <Leader>sf :CtrlSF<space>
+nmap <Leader>sn <Plug>CtrlSFCwordPath<CR>
+vmap <Leader>sv <Plug>CtrlSFVwordPath<CR>
 
 " 让输入上方，搜索列表在下方
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
