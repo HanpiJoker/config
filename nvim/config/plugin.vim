@@ -33,7 +33,7 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 "Air Line Setting
-let g:airline_theme='violet'
+let g:airline_theme='atomic'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_step = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -129,6 +129,36 @@ vmap <Leader>sv <Plug>CtrlSFVwordPath<CR>
 
 " 让输入上方，搜索列表在下方
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
+let g:fzf_layout = { 'window': 'call OpenFloatingWin()'  }
+function! OpenFloatingWin()
+	let height = &lines - 3
+	let width = float2nr(&columns - (&columns * 2 / 10))
+	let col = float2nr((&columns - width) / 2)
+
+	" 设置浮动窗口打开的位置，大小等。
+	" 这里的大小配置可能不是那么的 flexible 有继续改进的空间
+	let opts = {
+				\ 'relative': 'editor',
+				\ 'row': height * 0.3,
+				\ 'col': col + 30,
+				\ 'width': width * 2 / 3,
+				\ 'height': height / 2
+				\ }
+
+	let buf = nvim_create_buf(v:false, v:true)
+	let win = nvim_open_win(buf, v:true, opts)
+
+	" 设置浮动窗口高亮
+	call setwinvar(win, '&winhl', 'Normal:Pmenu')
+
+	setlocal
+		\ buftype=nofile
+		\ nobuflisted
+		\ bufhidden=hide
+		\ nonumber
+		\ norelativenumber
+		\ signcolumn=no
+endfunction
 
 " Vista Setting
 let g:vista#executives = ['coc', 'ctags', 'lcn', 'vim_lsp']
@@ -141,14 +171,6 @@ let g:vista_executive_for = {
 	\'rust': 'coc',
 	\'cpp': 'coc',
 	\'python': 'coc'}
-
-" Declare the command including the executable and options used to generate ctags output
-" for some certain filetypes.The file path will be appened to your custom command.
-" For example:
-let g:vista_ctags_cmd = {
-      \ 'haskell': 'hasktags -x -o - -c',
-      \ }
-
 " To enable fzf's preview window set g:vista_fzf_preview.
 " The elements of g:vista_fzf_preview will be passed as arguments to fzf#vim#with_preview()
 " For example:
@@ -162,8 +184,10 @@ let g:vista#renderer#icons = {
 \   "variable": "\uf71b",
 \  }
 
+let g:vista_stay_on_open = 0
+let g:vista_echo_cursor_strategy = 'scroll'
 let g:vista_sidebar_position = 'vertical topleft'
-let g:vista_update_on_text_changed_delay = 200
-let g:vista_cursor_delay = 200
+let g:vista_update_on_text_changed_delay = 10
+let g:vista_cursor_delay = 10
 nnoremap <leader>vf :Vista finder<CR>
 nnoremap <Leader>ilt :Vista!!<CR>

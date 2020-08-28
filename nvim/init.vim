@@ -4,7 +4,7 @@ execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/main.vim'
 " 插件安装
 call plug#begin('~/.config/nvim/plugged')
 " Error Check
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 " C++语法高亮
 Plug 'octol/vim-cpp-enhanced-highlight'
 " 多光标
