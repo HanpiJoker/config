@@ -131,5 +131,6 @@ let g:coc_global_extensions = [
 	\ 'coc-actions',
 	\ 'coc-rls',
 	\ 'coc-snippets',
+	\ 'coc-floaterm',
 	\ 'coc-ultisnips',
 	\ 'coc-vimlsp']

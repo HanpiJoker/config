@@ -47,6 +47,7 @@ Plug 'joker1007/vim-markdown-quote-syntax'
 Plug 'junegunn/goyo.vim'
 Plug 'voldikss/vim-translate-me'
 Plug 'dyng/ctrlsf.vim'
+Plug 'voldikss/vim-floaterm'
 " 插件列表结束
 call plug#end()
 

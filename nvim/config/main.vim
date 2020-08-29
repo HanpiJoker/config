@@ -15,7 +15,7 @@ filetype plugin on
 set number
 set relativenumber
 " 高亮当前行
-" set cursorline
+set cursorline cursorcolumn
 " 禁止折行
 set nowrap
 set sidescroll=1
@@ -144,3 +144,21 @@ au! BufRead,BufNewFile *.md set filetype=markdown
 
 "show tab and enter character 
 set list lcs+=tab:\┆\ ,eol:¬
+
+" set clipboard, install xclip at first
+let g:clipboard = {
+  \   'name': 'xclip-ubuntu',
+  \   'copy': {
+  \      '+': 'xclip -selection clipboard',
+  \      '*': 'xclip -selection clipboard',
+  \    },
+  \   'paste': {
+  \      '+': 'xclip -selection clipboard -o',
+  \      '*': 'xclip -selection clipboard -o',
+  \   },
+  \   'cache_enabled': 1,
+  \ }
+
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+	\,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+	\,sm:block-blinkwait175-blinkoff150-blinkon175

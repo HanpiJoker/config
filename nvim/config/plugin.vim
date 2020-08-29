@@ -191,3 +191,15 @@ let g:vista_update_on_text_changed_delay = 10
 let g:vista_cursor_delay = 10
 nnoremap <leader>vf :Vista finder<CR>
 nnoremap <Leader>ilt :Vista!!<CR>
+
+" floaterm keymapping, install neovim-remote remember
+tnoremap <esc> <C-\><C-n>
+nnoremap <leader>ft :FloatermToggle<CR>
+tnoremap <leader>ft <C-\><C-n>:FloatermToggle<CR>
+tnoremap <esc><esc> <C-\><C-n>:FloatermToggle<CR>
+nnoremap <leader>fw :FloatermNew<CR>
+tnoremap <leader>fw <C-\><C-n>:FloatermNew<CR>
+nnoremap <leader>fp :FloatermPrev<CR>
+tnoremap <leader>fp <C-\><C-n>:FloatermPrev<CR>
+nnoremap <leader>fn :FloatermNext<CR>
+tnoremap <leader>fn <C-\><C-n>:FloatermNext<CR>
