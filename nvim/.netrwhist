@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
-let g:netrw_dirhist_6='/home/spaceyu/Public/linux-stable/out.x86_64'
-let g:netrw_dirhist_5='/home/spaceyu/Documents/HanpiJoker.github.io/_posts'
-let g:netrw_dirhist_4='/home/spaceyu/Public/linux-stable/drivers/staging/android/ion'
-let g:netrw_dirhist_3='/home/spaceyu/Documents/HanpiJoker.github.io/_posts'
-let g:netrw_dirhist_2='/home/spaceyu/Public/linux-stable'
-let g:netrw_dirhist_1='/home/spaceyu/Public/qemu_aarch64/rootfs'
